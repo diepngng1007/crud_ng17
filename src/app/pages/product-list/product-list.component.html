@@ -1,0 +1,28 @@
+<div class="container">
+    <h2 class="text-center my-3 text-danger">Product List</h2>
+    <button class="btn btn-primary mb-3" routerLink="add-product">Add New</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; index as i">
+          <td scope="row">{{ i + 1 }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.desc }}</td>
+          <td class="td">
+              <button class="btn btn-warning" routerLink="update-product" [routerLink]="['update-product']">Update</button>
+              <button class="btn btn-danger" *ngIf="products && products.length > 0" (click)="deleteProduct(product.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
